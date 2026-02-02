@@ -299,5 +299,24 @@ document.addEventListener('DOMContentLoaded', function() {
     myChart.setOption(option);
 });
 </script>
+<!-- Navigation Buttons -->
+<div style="position: absolute; bottom: 40px; right: 40px; display: flex; gap: 16px; z-index: 20;">
+  <!-- Previous Button -->
+  <a href="slide7.html" 
+     style="display: inline-flex; align-items: center; padding: 12px 20px; background-color: rgba(30, 41, 59, 0.5); border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 12px; backdrop-filter: blur(8px); text-decoration: none; color: #38bdf8; font-weight: 600; transition: transform 0.2s;"
+     onmouseover="this.style.transform='scale(1.05)';" 
+     onmouseout="this.style.transform='scale(1)';">
+    <i class="fa-solid fa-arrow-left" style="margin-right: 8px;"></i> Précédent
+  </a>
+
+  <!-- Next Button -->
+  <a href="slide9.html" 
+     style="display: inline-flex; align-items: center; padding: 12px 20px; background-color: rgba(30, 41, 59, 0.5); border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 12px; backdrop-filter: blur(8px); text-decoration: none; color: #34d399; font-weight: 600; transition: transform 0.2s;"
+     onmouseover="this.style.transform='scale(1.05)';" 
+     onmouseout="this.style.transform='scale(1)';">
+    Suivant <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i>
+  </a>
+</div>
+
 </body>
 </html>
