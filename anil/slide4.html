@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Slide 4 - Le Besoin</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #0f172a;
+    overflow: hidden;
+}
+
+.slide-container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #0f172a;
+    overflow: hidden;
+}
+
+.bg-tech-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231e293b' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.5;
+}
+
+.header-accent {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: clamp(200px, 30vw, 400px);
+    height: clamp(200px, 30vw, 400px);
+    background-color: rgba(56, 189, 248, 0.03);
+    border-bottom-left-radius: 100%;
+    z-index: 1;
+}
+
+.content-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: clamp(30px, 5vw, 60px);
+    z-index: 10;
+}
+
+.header-section {
+    margin-bottom: clamp(20px, 3vw, 30px);
+}
+h1 {
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 700;
+    color: white;
+    margin: 0;
+    line-height: 1.1;
+}
+.subtitle {
+    font-size: clamp(16px, 2vw, 24px);
+    color: #38bdf8;
+    margin-top: 8px;
+    font-weight: 500;
+}
+
+/* Main Content Grid */
+.main-content {
+    display: flex;
+    gap: clamp(20px, 3vw, 50px);
+    flex: 1;
+    flex-wrap: wrap;
+}
+.left-col, .right-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Data Cards Left */
+.data-card {
+    background-color: rgba(30,41,59,0.6);
+    border-left: 4px solid #38bdf8;
+    border-radius: 8px;
+    padding: clamp(12px,2vw,20px);
+    margin-bottom: clamp(12px,2vw,16px);
+    display: flex;
+    align-items: center;
+}
+.data-icon {
+    width: clamp(40px,4vw,48px);
+    height: clamp(40px,4vw,48px);
+    background-color: rgba(56,189,248,0.1);
+    color: #38bdf8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+.data-content h3 {
+    color: white;
+    font-size: clamp(14px,1.5vw,18px);
+    margin: 0 0 4px 0;
+    font-weight: 600;
+}
+.data-content p {
+    color: #94a3b8;
+    font-size: clamp(12px,1.2vw,14px);
+    margin: 0;
+}
+
+/* Issue Cards Right */
+.issue-card {
+    background-color: rgba(30,41,59,0.4);
+    border: 1px dashed rgba(239,68,68,0.3);
+    border-radius: 8px;
+    padding: clamp(12px,2vw,20px);
+    margin-bottom: clamp(12px,2vw,16px);
+    display: flex;
+    align-items: center;
+}
+.issue-icon {
+    width: clamp(40px,4vw,48px);
+    height: clamp(40px,4vw,48px);
+    background-color: rgba(239,68,68,0.1);
+    color: #ef4444;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+.issue-content h3 {
+    color: #e2e8f0;
+    font-size: clamp(14px,1.5vw,18px);
+    margin: 0 0 4px 0;
+    font-weight: 600;
+}
+.issue-content p {
+    color: #94a3b8;
+    font-size: clamp(12px,1.2vw,14px);
+    margin: 0;
+}
+
+/* Column Titles */
+.col-title {
+    color: #cbd5e1;
+    text-transform: uppercase;
+    font-size: clamp(10px,1.2vw,12px);
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    margin-bottom: clamp(8px,1vw,16px);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Bottom Flow */
+.flow-container {
+    background: linear-gradient(90deg, rgba(30,41,59,0.3) 0%, rgba(30,41,59,0.8) 50%, rgba(30,41,59,0.3) 100%);
+    border-radius: 16px;
+    padding: clamp(12px,2vw,20px) clamp(20px,3vw,40px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    border: 1px solid rgba(148,163,184,0.1);
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.flow-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+.flow-step-icon {
+    width: clamp(40px,4vw,50px);
+    height: clamp(40px,4vw,50px);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    font-size: clamp(16px,1.5vw,20px);
+    background-color: #1e293b;
+    border: 1px solid #334155;
+    color: #94a3b8;
+    transition: all 0.3s;
+}
+.flow-step.active .flow-step-icon {
+    background-color: rgba(56,189,248,0.2);
+    border-color: #38bdf8;
+    color: #38bdf8;
+    box-shadow: 0 0 15px rgba(56,189,248,0.2);
+}
+.flow-step-label {
+    color: #94a3b8;
+    font-size: clamp(12px,1.2vw,14px);
+    font-weight: 500;
+}
+.flow-step.active .flow-step-label {
+    color: white;
+    font-weight: 700;
+}
+.flow-arrow {
+    color: #475569;
+    font-size: clamp(16px,2vw,20px);
+}
+
+/* Badge */
+.potential-badge {
+    display: inline-flex;
+    align-items: center;
+    background-color: rgba(52,211,153,0.1);
+    color: #34d399;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: clamp(10px,1.2vw,13px);
+    font-weight: 600;
+    border: 1px solid rgba(52,211,153,0.3);
+    margin-left: 20px;
+}
+</style>
+</head>
+
+<body>
+<div class="slide-container">
+<div class="bg-tech-pattern"></div>
+<div class="header-accent"></div>
+
+<div class="content-wrapper">
+<!-- Header -->
+<div class="header-section">
+<h1>Le Besoin</h1>
+<p class="subtitle">Exploiter la donnée pour sortir de l'artisanal</p>
+</div>
+
+<!-- Main Content -->
+<div class="main-content">
+<!-- Left Column -->
+<div class="left-col">
+<div class="col-title"><i class="fa-solid fa-database text-blue-400"></i> Données Projet Existantes</div>
+<div class="data-card">
+<div class="data-icon"><i class="fa-solid fa-building"></i></div>
+<div class="data-content">
+<h3>Type d'opération &amp; Phasage</h3>
+<p>Nature des travaux, calendrier prévisionnel</p>
+</div>
+</div>
+<div class="data-card">
+<div class="data-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+<div class="data-content">
+<h3>Contraintes Techniques</h3>
+<p>Modes opératoires, coactivité, risques spécifiques</p>
+</div>
+</div>
+<div class="data-card">
+<div class="data-icon"><i class="fa-solid fa-tree"></i></div>
+<div class="data-content">
+<h3>Environnement Chantier</h3>
+<p>Voisinage, accès, réseaux, flux logistiques</p>
+</div>
+</div>
+</div>
+
+<!-- Right Column -->
+<div class="right-col">
+<div class="col-title"><i class="fa-solid fa-lock text-red-400"></i> Freins à l'exploitation</div>
+<div class="issue-card">
+<div class="issue-icon"><i class="fa-solid fa-file-csv"></i></div>
+<div class="issue-content">
+<h3>Données peu structurées</h3>
+<p>Formats hétérogènes (PDF, Excel, mail)</p>
+</div>
+</div>
+<div class="issue-card">
+<div class="issue-icon"><i class="fa-solid fa-rotate-right"></i></div>
+<div class="issue-content">
+<h3>Peu capitalisées</h3>
+<p>Pas de base de connaissances inter-projets</p>
+</div>
+</div>
+<div class="issue-card">
+<div class="issue-icon"><i class="fa-solid fa-robot"></i></div>
+<div class="issue-content">
+<h3>Non exploitées par l'IA</h3>
+<p>Traitement purement manuel à ce jour</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Bottom Flow -->
+<div class="flow-container">
+<div style="color:white;font-weight:600;font-size:16px;display:flex;align-items:center;flex-wrap:wrap;">
+La Logique du projet :
+<span class="potential-badge"><i class="fa-solid fa-bolt mr-2"></i> Fort potentiel d’automatisation</span>
+</div>
+<div style="display:flex;align-items:center;gap:30px;flex-wrap:wrap;">
+<div class="flow-step"><div class="flow-step-icon"><i class="fa-solid fa-triangle-exclamation"></i></div><div class="flow-step-label">PROBLÈME</div></div>
+<i class="fa-solid fa-arrow-right flow-arrow"></i>
+<div class="flow-step active"><div class="flow-step-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div><div class="flow-step-label">BESOIN</div></div>
+<i class="fa-solid fa-arrow-right flow-arrow"></i>
+<div class="flow-step"><div class="flow-step-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div><div class="flow-step-label">SOLUTION</div></div>
+</div>
+</div>
+
+<!-- Page Number -->
+<div style="position:absolute;bottom:30px;right:40px;color:#64748b;font-size:14px;font-weight:500;">
+04
+</div>
+
+</div>
+</div>
+</body>
+</html>

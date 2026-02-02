@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=1280, height=720, initial-scale=1.0" name="viewport"/>
+<title>Slide 1 - Cover</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #0f172a;
+    overflow: hidden;
+}
+
+.slide-container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #0f172a;
+    overflow: hidden;
+}
+
+/* Background pattern */
+.bg-tech-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231e293b' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.5;
+    z-index: 0;
+}
+
+.content-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(30px, 5vw, 80px);
+    z-index: 10;
+}
+
+.glass-card {
+    background-color: rgba(30, 41, 59, 0.5);
+    border: 1px solid rgba(148, 163, 184, 0.1);
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+}
+
+/* Responsive typography */
+.hero-title {
+    font-size: clamp(32px, 5vw, 64px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.accent-text-blue {
+    color: #38bdf8;
+}
+
+.accent-text-green {
+    color: #34d399;
+}
+
+/* Subtitle responsive */
+.subtitle {
+    color: #cbd5e1;
+    font-size: clamp(16px, 2vw, 24px);
+    font-weight: 300;
+    line-height: 1.5;
+}
+</style>
+</head>
+<body>
+<div class="slide-container">
+<!-- Background Elements -->
+<div class="bg-tech-pattern"></div>
+<!-- Large Decorative Circle Top Right -->
+<div style="position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; border-radius: 50%; border: 1px solid rgba(56, 189, 248, 0.1); z-index: 1;"></div>
+<div style="position: absolute; top: -150px; right: -150px; width: 500px; height: 500px; border-radius: 50%; border: 1px solid rgba(52, 211, 153, 0.1); z-index: 1;"></div>
+<!-- Main Content -->
+<div class="content-wrapper">
+<!-- Project Label -->
+<div style="margin-bottom: 24px;">
+<div style="display: inline-flex; align-items: center; padding: 6px 16px; background-color: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 99px;">
+<span style="width: 8px; height: 8px; background-color: #38bdf8; border-radius: 50%; margin-right: 8px;"></span>
+<p style="color: #bae6fd; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin: 0;">Innovation BTP &amp; Intelligence Artificielle</p>
+</div>
+</div>
+<!-- Title -->
+<div style="margin-bottom: 32px;">
+<h1 class="hero-title text-white font-bold">
+                    Automatisation des<br/>
+                    missions <span class="accent-text-blue">CSPS</span>
+</h1>
+<div style="display: flex; align-items: center; margin-top: 10px;">
+<span class="hero-title text-white font-bold" style="margin-right: 20px;">par</span>
+<span class="hero-title accent-text-green font-bold">Intelligence Artificielle</span>
+</div>
+</div>
+<!-- Divider -->
+<div style="width: 80px; height: 6px; background-color: #34d399; margin-bottom: 32px; border-radius: 3px;"></div>
+<!-- Subtitle -->
+<div style="max-width: 800px; margin-bottom: 60px;">
+<p style="color: #cbd5e1; font-size: 24px; font-weight: 300; line-height: 1.5; margin: 0;">
+                    Génération assistée de livrables réglementaires SPS<br/>
+                    à partir des données projet.
+                </p>
+</div>
+<!-- Footer / Contact Info -->
+<div class="glass-card" style="padding: 24px 32px; display: flex; justify-content: space-between; align-items: center;">
+<div style="display: flex; align-items: center;">
+<div style="width: 48px; height: 48px; background-color: rgba(56, 189, 248, 0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-right: 16px;">
+<i class="fa-solid fa-hard-hat text-2xl accent-text-blue"></i>
+</div>
+<div>
+<p style="color: #94a3b8; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px;">Porteur du projet</p>
+<p style="color: #fff; font-size: 18px; font-weight: 500; margin: 0;">Coordonnateur SPS – Expertise terrain BTP</p>
+</div>
+</div>
+<div style="border-left: 1px solid rgba(148, 163, 184, 0.2); padding-left: 32px; text-align: right;">
+<p style="color: #94a3b8; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px;">Contact</p>
+<p style="color: #fff; font-size: 16px; font-family: 'Courier New', monospace; margin: 0;">
+                        [Nom] • [Email] • [Téléphone]
+                    </p>
+</div>
+</div>
+</div>
+<!-- Decorative Bottom Right Icon -->
+<div style="position: absolute; bottom: 40px; right: 40px; opacity: 0.2;">
+<i class="fa-solid fa-network-wired" style="font-size: 120px; color: #38bdf8;"></i>
+</div>
+</div>
+</body>
+</html>

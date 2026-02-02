@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Slide 2 - Le métier CSPS</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #0f172a;
+    overflow: hidden;
+}
+
+.slide-container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #0f172a;
+    overflow: hidden;
+}
+
+/* Background */
+.bg-tech-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231e293b' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.5;
+}
+
+.header-accent {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: clamp(200px, 25vw, 400px);
+    height: clamp(200px, 25vw, 400px);
+    background-color: rgba(56, 189, 248, 0.03);
+    border-bottom-left-radius: 100%;
+}
+
+/* Layout */
+.content-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: clamp(30px, 5vw, 80px);
+    z-index: 10;
+}
+
+.header-section {
+    margin-bottom: clamp(20px, 3vw, 40px);
+}
+
+.main-content {
+    display: flex;
+    flex: 1;
+    gap: clamp(20px, 4vw, 60px);
+    flex-wrap: wrap;
+}
+
+.left-col {
+    flex: 1.2;
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.right-col {
+    flex: 0.8;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Typography */
+h1 {
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 700;
+    color: white;
+    margin: 0;
+}
+
+.subtitle {
+    font-size: clamp(18px, 2vw, 24px);
+    color: #38bdf8;
+    margin-top: 8px;
+}
+
+.intro-text {
+    color: #cbd5e1;
+    font-size: clamp(14px, 1.5vw, 18px);
+    margin-top: 16px;
+    max-width: 800px;
+    line-height: 1.6;
+}
+
+/* Cards */
+.role-card {
+    background-color: rgba(30, 41, 59, 0.6);
+    border: 1px solid rgba(148, 163, 184, 0.15);
+    border-radius: 12px;
+    padding: clamp(16px, 2vw, 24px);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.icon-box {
+    width: clamp(44px, 5vw, 56px);
+    height: clamp(44px, 5vw, 56px);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+}
+
+.icon-box.blue { background: rgba(56,189,248,0.15); color:#38bdf8; }
+.icon-box.green { background: rgba(52,211,153,0.15); color:#34d399; }
+.icon-box.purple { background: rgba(167,139,250,0.15); color:#a78bfa; }
+
+.card-title {
+    color: white;
+    font-weight: 600;
+    font-size: clamp(16px, 1.5vw, 20px);
+}
+
+.card-desc {
+    color: #94a3b8;
+    font-size: clamp(13px, 1.2vw, 16px);
+}
+
+/* Impact panel */
+.impact-container {
+    background-color: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(52, 211, 153, 0.2);
+    border-radius: 16px;
+    padding: clamp(20px, 3vw, 32px);
+}
+
+.impact-title {
+    color: #34d399;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin-bottom: 24px;
+    display: block;
+}
+
+.impact-item {
+    margin-bottom: 20px;
+    padding: 16px;
+    background-color: rgba(30, 41, 59, 0.4);
+    border-radius: 8px;
+    border-left: 4px solid #34d399;
+}
+
+.impact-text {
+    color: white;
+    font-size: clamp(14px, 1.4vw, 18px);
+    margin: 0;
+}
+
+.central-doc {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px dashed rgba(148, 163, 184, 0.3);
+}
+</style>
+</head>
+
+<body>
+<div class="slide-container">
+
+<div class="bg-tech-pattern"></div>
+<div class="header-accent"></div>
+
+<div class="content-wrapper">
+
+<!-- Header -->
+<div class="header-section">
+<h1>Le métier CSPS</h1>
+<p class="subtitle">Rôle et enjeux du coordonnateur</p>
+<p class="intro-text">
+Le Coordonnateur SPS est l'acteur clé de la prévention sur les chantiers.
+Il assure la sécurité et la santé des travailleurs par une action méthodique.
+</p>
+</div>
+
+<!-- Content -->
+<div class="main-content">
+
+<div class="left-col">
+
+<div class="role-card">
+<div class="icon-box blue">
+<i class="fa-solid fa-shield-halved text-xl"></i>
+</div>
+<div>
+<div class="card-title">Anticiper les risques</div>
+<p class="card-desc">Identifier les dangers liés à la coactivité et définir les mesures de prévention en amont.</p>
+</div>
+</div>
+
+<div class="role-card">
+<div class="icon-box green">
+<i class="fa-solid fa-users-gear text-xl"></i>
+</div>
+<div>
+<div class="card-title">Coordonner les entreprises</div>
+<p class="card-desc">Orchestrer les interventions simultanées ou successives des différents corps d'état.</p>
+</div>
+</div>
+
+<div class="role-card">
+<div class="icon-box purple">
+<i class="fa-solid fa-file-signature text-xl"></i>
+</div>
+<div>
+<div class="card-title">Produire les livrables</div>
+<p class="card-desc">Rédiger les documents réglementaires obligatoires (PGC, DIUO, RJ).</p>
+</div>
+</div>
+
+</div>
+
+<div class="right-col">
+
+<div class="impact-container">
+
+<div class="central-doc">
+<i class="fa-solid fa-file-contract text-4xl mb-3 text-gray-300"></i>
+<p class="text-white font-bold text-lg m-0">Livrables & PGC</p>
+<p class="text-gray-400 text-sm">Plan Général de Coordination</p>
+</div>
+
+<span class="impact-title">Impact direct sur le projet</span>
+
+<div class="impact-item">
+<p class="impact-text">L’organisation du chantier</p>
+</div>
+
+<div class="impact-item">
+<p class="impact-text">La sécurité des intervenants</p>
+</div>
+
+<div class="impact-item">
+<p class="impact-text">La conformité réglementaire</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+<!-- Numéro -->
+<div style="position:absolute;bottom:30px;right:40px;color:#64748b;font-size:14px;">
+02
+</div>
+
+</div>
+</body>
+</html>

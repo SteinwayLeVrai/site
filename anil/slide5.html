@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Slide 5 - La Solution</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #0f172a;
+    overflow: hidden;
+}
+
+.slide-container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #0f172a;
+    overflow: hidden;
+}
+
+.bg-tech-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231e293b' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.5;
+}
+
+.content-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: clamp(30px,5vw,60px);
+    z-index: 10;
+}
+
+.header-section {
+    margin-bottom: clamp(30px,5vw,50px);
+}
+h1 {
+    font-size: clamp(28px,4vw,48px);
+    font-weight: 700;
+    color: white;
+    margin: 0;
+    line-height: 1.1;
+}
+.subtitle {
+    font-size: clamp(16px,2vw,24px);
+    color: #34d399;
+    margin-top: 8px;
+    font-weight: 500;
+}
+
+/* Grid Layout */
+.content-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(20px,4vw,60px);
+    flex: 1;
+}
+
+/* Left Panel */
+.left-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+}
+
+.solution-desc-card {
+    background-color: rgba(30,41,59,0.4);
+    border: 1px solid rgba(56,189,248,0.2);
+    border-radius: 16px;
+    padding: clamp(20px,2.5vw,30px);
+    margin-bottom: clamp(20px,2vw,30px);
+}
+.main-func-title {
+    color: #e2e8f0;
+    font-size: clamp(12px,1.2vw,14px);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+}
+.main-func-text {
+    color: white;
+    font-size: clamp(18px,2vw,24px);
+    font-weight: 600;
+    line-height: 1.4;
+}
+.main-func-text span {
+    font-weight: 400;
+    color: #cbd5e1;
+    font-size: clamp(16px,1.8vw,20px);
+}
+
+.objectives-container h3 {
+    color: white;
+    font-size: clamp(18px,2vw,20px);
+    margin-bottom: clamp(16px,2vw,24px);
+}
+
+.objective-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: clamp(16px,1.5vw,24px);
+}
+.check-icon {
+    width: clamp(28px,3vw,32px);
+    height: clamp(28px,3vw,32px);
+    background-color: rgba(52,211,153,0.2);
+    color: #34d399;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: clamp(12px,2vw,16px);
+    font-size: clamp(12px,1.5vw,14px);
+}
+.objective-text {
+    color: #cbd5e1;
+    font-size: clamp(14px,1.5vw,18px);
+    font-weight: 400;
+}
+
+/* Right Panel */
+.metrics-panel {
+    flex: 1;
+    min-width: 300px;
+    background: linear-gradient(180deg, rgba(15,23,42,0.8) 0%, rgba(30,41,59,0.6) 100%);
+    border: 1px solid rgba(52,211,153,0.3);
+    border-radius: 24px;
+    padding: clamp(20px,3vw,40px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.panel-label {
+    position: absolute;
+    top: clamp(16px,2vw,24px);
+    left: clamp(16px,2vw,32px);
+    color: #34d399;
+    font-size: clamp(12px,1.2vw,14px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: flex;
+    align-items: center;
+}
+
+.chart-row {
+    margin-bottom: clamp(24px,3vw,40px);
+}
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: clamp(8px,2vw,12px);
+    color: #94a3b8;
+    font-size: clamp(14px,1.5vw,16px);
+    font-weight: 500;
+}
+.bar-container {
+    height: clamp(36px,4vw,48px);
+    background-color: rgba(15,23,42,0.6);
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+.bar-fill {
+    height: 100%;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: clamp(8px,1vw,16px);
+    transition: width 1s ease-out;
+}
+.bar-old {
+    width: 100%;
+    background-color: #475569;
+}
+.bar-new {
+    width: 15%;
+    background-color: #34d399;
+    box-shadow: 0 0 20px rgba(52,211,153,0.4);
+    justify-content: center;
+    padding: 0;
+}
+.bar-value, .bar-value-outside {
+    font-weight: 700;
+    font-size: clamp(14px,1.5vw,18px);
+    color: white;
+}
+
+.transition-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -10px 0 clamp(10px,2vw,20px) 0;
+    color: #94a3b8;
+    font-size: clamp(20px,2.5vw,24px);
+}
+
+.result-badge {
+    position: absolute;
+    bottom: clamp(16px,2vw,30px);
+    right: clamp(16px,2vw,30px);
+    background-color: rgba(52,211,153,0.15);
+    border: 1px solid #34d399;
+    color: #34d399;
+    padding: clamp(6px,1vw,8px) clamp(12px,2vw,16px);
+    border-radius: 99px;
+    font-weight: 600;
+    font-size: clamp(12px,1.2vw,14px);
+    display: flex;
+    align-items: center;
+}
+</style>
+</head>
+<body>
+<div class="slide-container">
+<div class="bg-tech-pattern"></div>
+<div class="content-wrapper">
+<!-- Header -->
+<div class="header-section">
+<h1>La Solution</h1>
+<p class="subtitle">Une assistance intelligente dédiée aux missions CSPS</p>
+</div>
+
+<div class="content-grid">
+<!-- Left Panel -->
+<div class="left-panel">
+<div class="solution-desc-card">
+<p class="main-func-title"><i class="fa-solid fa-microchip" style="margin-right: 8px;"></i>Fonction Principale</p>
+<p class="main-func-text">
+Génération assistée d’un PGC<br/>
+<span>à partir des données brutes du projet.</span>
+</p>
+</div>
+
+<div class="objectives-container">
+<h3>Objectifs stratégiques</h3>
+<div class="objective-item">
+<div class="check-icon"><i class="fa-solid fa-check"></i></div>
+<p class="objective-text">Réduire drastiquement le temps de production</p>
+</div>
+<div class="objective-item">
+<div class="check-icon"><i class="fa-solid fa-check"></i></div>
+<p class="objective-text">Homogénéiser la qualité des livrables</p>
+</div>
+<div class="objective-item">
+<div class="check-icon"><i class="fa-solid fa-check"></i></div>
+<p class="objective-text">Libérer du temps pour l'analyse terrain</p>
+</div>
+</div>
+</div>
+
+<!-- Right Panel -->
+<div class="metrics-panel">
+<div class="panel-label"><i class="fa-solid fa-chart-line" style="margin-right: 8px;"></i> Impact Mesurable</div>
+
+<div class="chart-row">
+<div class="chart-header"><span><i class="fa-regular fa-file-word" style="margin-right: 8px;"></i>Process Actuel</span></div>
+<div class="bar-container">
+<div class="bar-fill bar-old"><span class="bar-value">2h à 4h</span></div>
+</div>
+</div>
+
+<div class="transition-arrow"><i class="fa-solid fa-arrow-down-long"></i></div>
+
+<div class="chart-row">
+<div class="chart-header"><span style="color:white;"><i class="fa-solid fa-wand-magic-sparkles" style="margin-right:8px;color:#34d399;"></i>Avec l'Application</span></div>
+<div class="bar-container" style="background: transparent; overflow: visible;">
+<div class="bar-fill bar-new"></div>
+<span class="bar-value-outside" style="color:#34d399;">15 à 30 min</span>
+</div>
+</div>
+
+<div class="result-badge"><i class="fa-solid fa-bolt" style="margin-right: 8px;"></i> Gain de temps &gt; 85%</div>
+</div>
+</div>
+
+<!-- Page Number -->
+<div style="position:absolute;bottom:30px;right:40px;color:#64748b;font-size:14px;font-weight:500;">
+05
+</div>
+</div>
+</div>
+</body>
+</html>

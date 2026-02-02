@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Slide 3 - Le Problème</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #0f172a;
+    overflow: hidden;
+}
+
+.slide-container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #0f172a;
+    overflow: hidden;
+}
+
+/* Background */
+.bg-tech-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231e293b' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.5;
+}
+
+.content-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: clamp(30px, 5vw, 80px);
+    z-index: 10;
+}
+
+/* Header */
+.header-section {
+    margin-bottom: clamp(20px, 3vw, 40px);
+}
+h1 {
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 700;
+    color: white;
+    margin: 0;
+    line-height: 1.1;
+}
+.subtitle {
+    font-size: clamp(18px, 2vw, 24px);
+    color: #f87171;
+    margin-top: 8px;
+    font-weight: 500;
+}
+
+/* Main Grid */
+.main-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: clamp(20px, 4vw, 60px);
+    flex: 1;
+    align-items: start;
+    flex-wrap: wrap;
+}
+
+/* Left Column: Problem List */
+.problem-list {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(16px, 2vw, 24px);
+}
+
+.problem-item {
+    display: flex;
+    align-items: flex-start;
+    padding: clamp(12px, 2vw, 20px);
+    background-color: rgba(30, 41, 59, 0.4);
+    border-radius: 12px;
+    border: 1px solid rgba(148, 163, 184, 0.1);
+    transition: all 0.2s ease;
+}
+.problem-item:hover {
+    background-color: rgba(30, 41, 59, 0.6);
+    border-color: rgba(248, 113, 113, 0.3);
+}
+.bullet-icon {
+    width: clamp(28px, 3vw, 32px);
+    height: clamp(28px, 3vw, 32px);
+    background-color: rgba(248, 113, 113, 0.1);
+    color: #f87171;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+.item-content h3 {
+    color: white;
+    font-size: clamp(16px, 1.5vw, 20px);
+    font-weight: 600;
+    margin: 0 0 4px 0;
+}
+.item-content p {
+    color: #94a3b8;
+    font-size: clamp(13px, 1.2vw, 16px);
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Right Column: KPI Card */
+.kpi-container {
+    position: relative;
+}
+.kpi-card {
+    background: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.95));
+    border: 1px solid rgba(248, 113, 113, 0.3);
+    border-radius: 24px;
+    padding: clamp(20px, 3vw, 40px) clamp(15px, 3vw, 30px);
+    text-align: center;
+    box-shadow: 0 20px 50px -12px rgba(0,0,0,0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.kpi-glow {
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: clamp(100px, 15vw, 150px);
+    height: clamp(100px, 15vw, 150px);
+    background: rgba(248, 113, 113, 0.2);
+    filter: blur(60px);
+    border-radius: 50%;
+}
+
+.kpi-icon-large {
+    font-size: clamp(32px, 5vw, 48px);
+    color: #f87171;
+    margin-bottom: 24px;
+    display: inline-block;
+    padding: clamp(12px, 2vw, 20px);
+    background-color: rgba(248, 113, 113, 0.1);
+    border-radius: 50%;
+}
+
+.kpi-stat-label {
+    color: #94a3b8;
+    font-size: clamp(12px, 1.2vw, 14px);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+.kpi-stat-value {
+    font-size: clamp(32px, 6vw, 56px);
+    font-weight: 800;
+    color: white;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+.kpi-stat-sub {
+    font-size: clamp(14px, 2vw, 18px);
+    color: #cbd5e1;
+    margin-bottom: 32px;
+}
+.kpi-divider {
+    height: 1px;
+    background-color: rgba(148,163,184,0.2);
+    margin: 0 auto 24px auto;
+    width: 80%;
+}
+.kpi-context {
+    background-color: rgba(15, 23, 42, 0.5);
+    border-radius: 12px;
+    padding: 12px clamp(8px, 2vw, 16px);
+    display: inline-block;
+    border: 1px dashed rgba(148,163,184,0.3);
+}
+.kpi-context-text {
+    color: #94a3b8;
+    font-size: clamp(12px, 1.2vw, 14px);
+    margin: 0;
+}
+.kpi-context-val {
+    color: white;
+    font-weight: 600;
+    font-size: clamp(14px, 1.5vw, 16px);
+}
+
+/* Decorative */
+.red-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #f87171, transparent);
+}
+</style>
+</head>
+
+<body>
+<div class="slide-container">
+<div class="bg-tech-pattern"></div>
+
+<div class="content-wrapper">
+
+<!-- Header -->
+<div class="header-section">
+<h1>Le Problème</h1>
+<p class="subtitle">Une production documentaire encore largement manuelle</p>
+</div>
+
+<!-- Main Grid -->
+<div class="main-grid">
+
+<!-- Left Column -->
+<div class="problem-list">
+<div style="margin-bottom: 16px;">
+<h2 style="color:#cbd5e1;font-size:16px;text-transform:uppercase;letter-spacing:0.05em;margin:0;">Constats terrain</h2>
+</div>
+<div class="problem-item">
+<div class="bullet-icon"><i class="fa-solid fa-file-pen"></i></div>
+<div class="item-content">
+<h3>Livrables normés mais contextualisés</h3>
+<p>Chaque projet nécessite une adaptation précise malgré une base réglementaire fixe.</p>
+</div>
+</div>
+<div class="problem-item">
+<div class="bullet-icon"><i class="fa-regular fa-clock"></i></div>
+<div class="item-content">
+<h3>Temps de rédaction élevé</h3>
+<p>Saisie manuelle fastidieuse des données, ressaisies multiples et mise en forme chronophage.</p>
+</div>
+</div>
+<div class="problem-item">
+<div class="bullet-icon"><i class="fa-solid fa-rotate-right"></i></div>
+<div class="item-content">
+<h3>Répétitivité forte</h3>
+<p>Tâches à faible valeur ajoutée intellectuelle qui occupent une part majeure du temps.</p>
+</div>
+</div>
+<div class="problem-item">
+<div class="bullet-icon"><i class="fa-solid fa-toolbox"></i></div>
+<div class="item-content">
+<h3>Peu d’outils spécialisés</h3>
+<p>Utilisation prédominante de traitement de texte standard sans intelligence métier.</p>
+</div>
+</div>
+</div>
+
+<!-- Right Column: KPI -->
+<div class="kpi-container">
+<div class="kpi-card">
+<div class="kpi-glow"></div>
+<i class="fa-solid fa-stopwatch kpi-icon-large"></i>
+<div class="kpi-stat-label">Temps moyen de rédaction</div>
+<div class="kpi-stat-value">2 à 4 h</div>
+<div class="kpi-stat-sub">par Plan Général de Coordination (PGC)</div>
+<div class="kpi-divider"></div>
+<div class="kpi-context">
+<p class="kpi-context-text">Base de facturation mission</p>
+<p class="kpi-context-val">~4 heures / livrable</p>
+</div>
+<div class="red-line"></div>
+</div>
+<div style="text-align:center;margin-top:20px;">
+<p style="color:#f87171;font-size:14px;font-weight:500;">
+<i class="fa-solid fa-triangle-exclamation" style="margin-right:6px;"></i>
+Marge opérationnelle faible & risque d'erreur
+</p>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- Page Number -->
+<div style="position:absolute;bottom:30px;right:40px;color:#64748b;font-size:14px;font-weight:500;">
+03
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Slide 10 - Prévisionnel</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<style>
+body {
+    margin:0;
+    padding:0;
+    font-family:'Inter',sans-serif;
+    background-color:#0f172a;
+    overflow:hidden;
+}
+.slide-container {
+    width:100vw;
+    height:100vh;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+}
+.bg-tech-pattern {
+    position:absolute;top:0;left:0;right:0;bottom:0;
+    background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231e293b' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2v-4h4v-2H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity:0.5; z-index:0;
+}
+.content-wrapper {
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    padding:3vw 4vw;
+    z-index:10;
+    position:relative;
+}
+.header-section { margin-bottom:2vh; }
+h1 { font-size:clamp(28px,3vw,48px); font-weight:700; color:white; margin:0; line-height:1.1; }
+.subtitle { font-size:clamp(16px,1.5vw,24px); color:#34d399; margin-top:0.5vh; font-weight:500; }
+
+.main-content {
+    display:grid;
+    grid-template-columns: 1fr 2fr;
+    gap:2vw;
+    flex:1;
+}
+
+/* Left Column Cards */
+.data-cards-container {
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:1.5vh;
+}
+.data-card {
+    background-color: rgba(30,41,59,0.6);
+    border:1px solid rgba(148,163,184,0.2);
+    border-radius:1vw;
+    padding:1.2vw;
+    display:flex;
+    flex-direction:column;
+    position:relative;
+    transition: transform 0.3s ease;
+}
+.data-card:hover { transform: translateX(1vw); background-color: rgba(30,41,59,0.8); border-color: rgba(56,189,248,0.4); }
+
+.card-year { font-size:clamp(10px,1vw,14px); text-transform:uppercase; letter-spacing:0.05em; font-weight:700; margin-bottom:0.5vh; color:#94a3b8; }
+.card-phase { font-size:clamp(14px,1.5vw,18px); font-weight:600; color:white; margin-bottom:1vh; }
+
+.card-metrics { display:flex; justify-content:space-between; align-items:flex-end; border-top:1px solid rgba(148,163,184,0.2); padding-top:1vh; }
+.metric-group { display:flex; flex-direction:column; }
+.metric-label { font-size:clamp(10px,1vw,12px); color:#94a3b8; margin-bottom:0.2vh; }
+.metric-value { font-size:clamp(16px,2vw,20px); font-weight:700; color:#38bdf8; }
+.metric-value.highlight { color:#34d399; }
+
+.card-accent-bar { position:absolute; left:0; top:0; bottom:0; width:0.6vw; }
+.accent-1 { background-color:#64748b; }
+.accent-2 { background-color:#38bdf8; }
+.accent-3 { background-color:#34d399; }
+
+/* Right Column Chart */
+.chart-wrapper {
+    background-color: rgba(15,23,42,0.4);
+    border-radius:1.2vw;
+    border:1px solid rgba(148,163,184,0.1);
+    padding:1vw;
+    display:flex;
+    flex-direction:column;
+    position:relative;
+}
+.chart-container { flex:1; width:100%; min-height:30vh; }
+
+.growth-message {
+    position:absolute;
+    top:-1.5vw;
+    right:1.5vw;
+    background-color: rgba(52,211,153,0.15);
+    border:1px solid #34d399;
+    color:#34d399;
+    padding:0.5vw 2vw;
+    border-radius:99px;
+    font-size:clamp(12px,1vw,14px);
+    font-weight:600;
+    display:flex;
+    align-items:center;
+    box-shadow:0 4px 12px rgba(0,0,0,0.2);
+    z-index:20;
+}
+
+/* Page Number */
+.page-number { position:absolute; bottom:2vh; right:2vw; color:#64748b; font-size:clamp(10px,1vw,14px); font-weight:500; }
+</style>
+</head>
+<body>
+<div class="slide-container">
+<div class="bg-tech-pattern"></div>
+<div class="content-wrapper">
+<div class="header-section">
+<h1>Prévisionnel 3 ans</h1>
+<p class="subtitle">Trajectoire de croissance & objectifs</p>
+</div>
+<div class="main-content">
+<div class="data-cards-container">
+<div class="data-card"><div class="card-accent-bar accent-1"></div><p class="card-year">Année 1</p><p class="card-phase">Lancement</p><div class="card-metrics"><div class="metric-group"><span class="metric-label"><i class="fa-solid fa-users mr-1"></i>Clients</span><span class="metric-value">15</span></div><div class="metric-group" style="text-align:right;"><span class="metric-label"><i class="fa-solid fa-euro-sign mr-1"></i>CA</span><span class="metric-value">18 k€</span></div></div></div>
+<div class="data-card"><div class="card-accent-bar accent-2"></div><p class="card-year">Année 2</p><p class="card-phase">Accélération</p><div class="card-metrics"><div class="metric-group"><span class="metric-label"><i class="fa-solid fa-users mr-1"></i>Clients</span><span class="metric-value">65</span></div><div class="metric-group" style="text-align:right;"><span class="metric-label"><i class="fa-solid fa-euro-sign mr-1"></i>CA</span><span class="metric-value">78 k€</span></div></div></div>
+<div class="data-card"><div class="card-accent-bar accent-3"></div><p class="card-year">Année 3</p><p class="card-phase">Passage à l'échelle</p><div class="card-metrics"><div class="metric-group"><span class="metric-label"><i class="fa-solid fa-users mr-1"></i>Clients</span><span class="metric-value highlight">200</span></div><div class="metric-group" style="text-align:right;"><span class="metric-label"><i class="fa-solid fa-euro-sign mr-1"></i>CA</span><span class="metric-value highlight">240 k€</span></div></div></div>
+</div>
+<div class="chart-wrapper">
+<div class="growth-message"><i class="fa-solid fa-arrow-trend-up mr-2"></i> Croissance progressive et maîtrisée</div>
+<div class="chart-container" id="forecastChart"></div>
+</div>
+</div>
+<div class="page-number">10</div>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+    var chartDom=document.getElementById('forecastChart');
+    var myChart=echarts.init(chartDom);
+    var option={
+        backgroundColor:'transparent',
+        tooltip:{trigger:'axis',axisPointer:{type:'shadow'},backgroundColor:'rgba(15,23,42,0.9)',borderColor:'#38bdf8',textStyle:{color:'#fff'}},
+        grid:{left:'3%',right:'4%',bottom:'3%',containLabel:true,top:'20%'},
+        xAxis:{type:'category',data:['Année 1\nLancement','Année 2\nAccélération','Année 3\nPassage à l\'échelle'],
+            axisLine:{lineStyle:{color:'#475569'}},
+            axisLabel:{color:'#cbd5e1',fontSize:14,interval:0,margin:20},
+            axisTick:{show:false}
+        },
+        yAxis:{type:'value',name:'Chiffre d\'Affaires (€)',nameTextStyle:{color:'#94a3b8',padding:[0,0,0,20]},
+            splitLine:{lineStyle:{type:'dashed',color:'rgba(148,163,184,0.1)'}},
+            axisLabel:{color:'#94a3b8',formatter:'{value} €'}
+        },
+        series:[{name:'Chiffre d\'Affaires',type:'bar',barWidth:'40%',
+            data:[
+                {value:18000,itemStyle:{color:new echarts.graphic.LinearGradient(0,0,0,1,[{offset:0,color:'#64748b'},{offset:1,color:'#334155'}])},label:{show:true,position:'top',formatter:'18 k€',color:'#cbd5e1',fontSize:14,fontWeight:'bold',offset:[0,5]}},
+                {value:78000,itemStyle:{color:new echarts.graphic.LinearGradient(0,0,0,1,[{offset:0,color:'#38bdf8'},{offset:1,color:'#0ea5e9'}])},label:{show:true,position:'top',formatter:'78 k€',color:'#38bdf8',fontSize:14,fontWeight:'bold',offset:[0,5]}},
+                {value:240000,itemStyle:{color:new echarts.graphic.LinearGradient(0,0,0,1,[{offset:0,color:'#34d399'},{offset:1,color:'#10b981'}])},label:{show:true,position:'top',formatter:'240 k€',color:'#34d399',fontSize:16,fontWeight:'bold',offset:[0,5]}}
+            ]
+        }]
+    };
+    myChart.setOption(option);
+    window.addEventListener('resize',()=>myChart.resize());
+});
+</script>
+</body>
+</html>
